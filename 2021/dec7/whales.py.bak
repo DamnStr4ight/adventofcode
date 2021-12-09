@@ -1,0 +1,34 @@
+
+with open("input.txt") as data:
+    crabs=data.readline()
+    crabs=crabs.split(',')
+    crabs=[int(i) for i in crabs]
+    maxLaneNr=max(crabs)
+    minLineNr=min(crabs)
+    #print(maxLaneNr)
+    #print(minLineNr)
+    lanes=[0 for _ in range(maxLaneNr+1)]
+    for crab in crabs:
+        lanes[crab]+=1
+    fuelCostLowest=-1
+    lowestCostLane=0
+    fuelSteps=[0 for _ in range(maxLaneNr+1)]
+    for i in range(len(fuelSteps)):
+        try:
+            fuelSteps[i]=fuelSteps[i-1]+i
+        except:
+            pass
+    print(fuelSteps)
+    for laneChecked in range(len(lanes)):
+        fuelCost=0
+        #print('Checking lane '+str(laneChecked))
+        for lane in range(len(lanes)):
+            fuelCost+=lanes[lane]*abs(fuelSteps[abs(laneChecked-lane)])
+            #print('fuel cost from lane ' +str(lane)+' to '+str(laneChecked)+ ' is ' + str(fuelCost)+ ' for '+str(lanes[lane])+ ' crabs.')
+        if(fuelCost<fuelCostLowest or fuelCostLowest==-1):
+            fuelCostLowest=fuelCost
+            lowestCostLane=laneChecked
+    print('Lowest fuel cost is '+str(fuelCostLowest)+ ' in lane '+str(lowestCostLane))
+    #print(crabs)
+    #print(lanes)
+    #print(sum(crabs)/len(crabs))
