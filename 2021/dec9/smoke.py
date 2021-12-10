@@ -41,8 +41,9 @@ with open("input.txt") as data:
                 unasigned_points.pop(-1)
     print('Sum of risk level: '+str(result1))
     
-    basins=[[]for _ in range(len(low_points))]
+    
     #solution 2
+    basins=[[]for _ in range(len(low_points))]
     for point in range(len(low_points)):
         basins[point].append(low_points[point])
     while len(unasigned_points)>0:
