@@ -84,7 +84,7 @@ def printSolution():
         print(tmp)
 
 x_max,y_max=findsheetSize()
-sheet=[['.' for _ in range(x_max)] for _ in range(y_max)]
+sheet=[[' ' for _ in range(x_max)] for _ in range(y_max)]
 fillDots()
 foldSheet(folds[0])
 print('Result1: '+str(countDots()))
@@ -97,6 +97,4 @@ for fold in folds:
         for row in range(y_max):
             sheet[row]=sheet[row][:fold[1]]
         x_max=len(sheet[0])
-print(countDots())
 printSheet()
-
