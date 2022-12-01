@@ -12,10 +12,7 @@ for elf in elves:
     curr_elf_cal = 0
     for cal in elf:
         curr_elf_cal +=cal
-    if curr_elf_cal>min(max_cal):
-        max_cal[max_cal.index(min(max_cal))]=curr_elf_cal
-tot_cal = 0
-for i in max_cal:
-    tot_cal +=i
+    if sum(elf)>min(max_cal):
+        max_cal[max_cal.index(min(max_cal))]=sum(elf)
 print("Elf carrying the most: " + str(max(max_cal)))
-print("Top three elfs carries: " + str(tot_cal))
+print("Top three elfs carries: " + str(sum(max_cal)))
