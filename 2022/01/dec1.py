@@ -1,8 +1,5 @@
-
-idx=0
-with open("example.txt") as data:
-    elves = [eval(x.split('\n')) for x in data.read().split("\n\n")]
-print(elves)
+with open("data.txt") as data:
+    elves = [x.split('\n') for x in eval(data.read().split("\n\n"))]
 max_cal=[0,0,0]
 for elf in elves:
     if sum(eval(x) for x in elf)>min(max_cal):
