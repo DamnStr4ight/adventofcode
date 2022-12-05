@@ -1,5 +1,3 @@
-import time
-start_time = time.time()
 f = open("example.txt", 'r')
 lines = f.read().split('\n')
 stacks  = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
@@ -14,4 +12,3 @@ for instruction in instructions:
     stacks2[instruction[2]-1][0:0] = stacks2[instruction[1]-1][:instruction[0]]
     del stacks2[instruction[1]-1][:instruction[0]]
 print("".join([stack[0] for stack in stacks2]))
-print("--- %s seconds ---" % (time.time() - start_time))
