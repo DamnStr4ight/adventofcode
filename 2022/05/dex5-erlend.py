@@ -1,5 +1,4 @@
-f = open("example.txt", 'r')
-lines = f.read().split('\n')
+lines = open("example.txt", 'r').read().split('\n')
 stacks  = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
 stacks2 = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
 instructions = [[int(word) for word in line.split(' ') if word.isnumeric()] for line in lines if len(line) > 1 and line[0].islower()]
