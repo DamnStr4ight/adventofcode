@@ -1,7 +1,7 @@
 import copy
 lines = open("data.txt", 'r').read().split('\n')
-stacks  = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
-instructions = [[int(word) for word in line.split(' ') if word.isnumeric()] for line in lines if len(line) > 1 and line[0].islower()]
+stacks  = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isalpha()] for i in range(50)] if stack]
+instructions = [[int(word) for word in line.split(' ') if word.isnumeric()] for line in lines if len(line) > 1 and line[0].isalpha()]
 def craneOperation(model, box_layout, moves):
     for task in moves:
         for i in range(task[0]):
