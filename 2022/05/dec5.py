@@ -1,37 +1,14 @@
 import copy
-answer = ''
-num_stacks = 0
-
-with open("data.txt","r") as d:
-    num_stacks=int(len(d.readline())/4)
-stacks=[[] for _ in range(num_stacks)]
-
-with open("data.txt","r") as d:
-    for line in d:
-        if any(char.isdigit() for char in line):
-            break
-        for char in range(1,len(line),4):
-            if line[char] != ' ':
-                stacks[int(char/4)].append(line[char])
-    d.readline() #pop the blank
-    instructions = []
-    for line in d:
-        line=line.split(' ')
-        instructions.append([int(line[1]),int(line[3]),int(line[5])])
-
+f = open("example.txt", 'r')
+lines = f.read().split('\n')
+stacks  = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
+stacks2 = [[stack][0] for stack in [[line[i] for line in lines if len(line) > i and line[i].isupper()] for i in range(50)] if stack]
+instructions = [[int(word) for word in line.split(' ') if word.isnumeric()] for line in lines if len(line) > 1 and line[0].islower()]
 def craneOperation(model, box_layout, moves):
-    answer = ''
     for task in moves:
         for i in range(task[0]):
             tmp=box_layout[task[1]-1].pop(0)
-            if model == 9000:
-                box_layout[task[2]-1].insert(0,tmp)
-            elif model == 9001:
-                box_layout[task[2]-1].insert(i,tmp)
-    for stack in box_layout:
-        answer +=stack[0]
-    return answer
-
-
+            box_layout[task[2]-1].insert(0,tmp) if model==9000 else box_layout[task[2]-1].insert(i,tmp)
+    return "".join([stack[0] for stack in box_layout])
 print(craneOperation(9000, copy.deepcopy(stacks), instructions))
 print(craneOperation(9001, copy.deepcopy(stacks), instructions))
