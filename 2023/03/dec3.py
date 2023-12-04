@@ -6,12 +6,12 @@ numbers=[]
 gear_coordinates=[]
 
 def lookAhead(x,y):
-
     for x_n in range(x,max_x+1):
         if x_n==max_x:
             return max_x
         elif not lines[y][x_n].isdigit():
             return x_n
+
 with open("data.txt") as data:
     for line in data:
         lines.append(line.strip())
@@ -45,7 +45,7 @@ with open("data.txt") as data:
                 if n[2]-1 <= s[1] <= n[3]+1:
                     sum+=int(n[0])
                     break
-    #find gear coordinates with 2 numbers close:
+    #find gear coordinates with 2 numbers adjacent:
     for g in gear_coordinates:
         adj_cnt=0
         adj=[]
