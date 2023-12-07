@@ -34,7 +34,6 @@ seed_found=False
 seed_ranges=[]
 for s in range(0,len(seeds),2):
     seed_ranges.append([seeds[s],seeds[s]+seeds[s+1]])
-#print(seed_ranges)
 maps.reverse()
 destination=0
 location=0
@@ -42,14 +41,12 @@ while not seed_found:
     if(location%10):
         print("Trying location" + str(location))
     for map in maps:
-        #print(destination)
         for submap in map:
             if destination in range(submap[0],submap[0]+submap[2]):
                 destination=submap[1]-submap[0]+destination
                 break
     for s in seed_ranges:
         if destination in range(s[0],s[1]):
-            #print("seed "+str(destination))
             seed_found=True
             sum2=location
     location+=1
