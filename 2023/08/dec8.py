@@ -1,4 +1,3 @@
-from pathlib import Path
 from itertools import cycle
 import math
 sum=sum2=0
@@ -29,6 +28,8 @@ while not end_found:
 nodes2 = [n for n in nodes.keys() if n.endswith('A')]
 steps = [0] * len(nodes2)
 for i, n in enumerate(nodes2):
+    print(i)
+    print(n)
     pos = n
     for d in cycle(instructions):
         if d == 'L':
